@@ -1,0 +1,18 @@
+{
+    
+    "algorithm": "scrypt",
+    "apiName": "Ethereum JS Pool API",
+    "apiPort": "8081",
+    "coinName": "Ethereum",
+    "coinTicker": "ETH",
+    "httpWebsitePort": 8080,
+    "httpWebsiteEnabled": 1,
+    "httpsWebsitePort": 8080,
+    "httpsWebsiteEnabled": 0,
+    "maxConnections": 1000000000,
+    "maxUsers": 1000000,
+    "poolAddress": "172.0.0.1",
+    "poolOwner": "none",
+    "poolPort": 3884
+    
+}
