@@ -7,11 +7,6 @@ var ipsDb = require("./ipsDb.json");
 
 // firewall functions
 
-function lookInDatabaseAllowedIps() {
-    
-    
-    
-};
 function lookInDatabaseBannedIps() {
     
     
