@@ -23,7 +23,7 @@ if (websiteConfig.httpServerEnabled = 1) {
     
     var httpWebsite = http.createServer(function (httpReq, httpRes) {
         
-        var httpPage = url.parse(httpReq.httpRes);
+        var httpPage = url.parse(httpReq.httpRes).query;
         
         if (httpPage == "/home") {
             
@@ -47,7 +47,7 @@ if (websiteConfig.httpsServerEnabled = 1) {
     
     var httpsWebsite = https.createServer(function (httpsReq, httpsRes) {
         
-        var httpsPage = url.parse(httpsReq.httpsRes);
+        var httpsPage = url.parse(httpsReq.httpsRes).query;
         
         if (httpsPage == "/home") {
             
@@ -65,4 +65,4 @@ if (websiteConfig.httpsServerEnabled = 1) {
         
     }).listen(httpsServerConfig.httpsServerPort);
     
-}
+};
