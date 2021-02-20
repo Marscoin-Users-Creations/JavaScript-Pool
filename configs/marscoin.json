@@ -1,5 +1,6 @@
 {
     
+    "algorithm": "scrypt",
     "apiName": "Marscoin JS Pool API",
     "apiPort": "8081",
     "coinName": "Marscoin",
