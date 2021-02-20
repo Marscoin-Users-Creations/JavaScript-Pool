@@ -1,5 +1,6 @@
 // default requires
 
+var discord = require("discord.js");
 var fs = require("fs");
 var http = require("http");
 var https = require("https");
