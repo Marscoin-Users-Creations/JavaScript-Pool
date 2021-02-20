@@ -6,6 +6,7 @@
     "coinTicker": "MARS",
     "maxConnections": 1000000000,
     "maxUsers": 1000000,
+    "poolAddress": "172.0.0.1",
     "poolOwner": "none",
     "poolPort": 3884
     
