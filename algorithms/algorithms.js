@@ -31,7 +31,17 @@ function algorithms() {
         
         
     };
+    if (poolConfig.litecoinPoolEnabled = 1) {
+        
+        
+        
+    };
     if (poolConfig.marscoinPoolEnabled = 1) {
+        
+        
+        
+    };
+    if (poolConfig.uraniumxPoolEnabled = 1) {
         
         
         
