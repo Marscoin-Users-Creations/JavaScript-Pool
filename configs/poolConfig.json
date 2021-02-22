@@ -1,8 +1,34 @@
 {
     
+    "bitcoinPoolConfig": {
+        
+        "file": "./bitcoin.json"
+        
+    },
     "bitcoinPoolEnabled": 0,
+    "ethereumPoolConfig": {
+        
+        "file": "./ethereum.json"
+        
+    },
     "ethereumPoolEnabled": 0,
+    "litecoinPoolConfig": {
+        
+        "file": "./litecoin.json"
+        
+    },
+    "litecoinPoolEnabled": "0"
+    "marscoinPoolConfig": {
+        
+        "file": "marscoin.json"
+        
+    },
     "marscoinPoolEnabled": 0,
+    "uraniumxPoolConfig": {
+        
+        "file": "./uraniumx.json"
+        
+    },
     "uraniumxPoolEnabled": 0
     
 }
