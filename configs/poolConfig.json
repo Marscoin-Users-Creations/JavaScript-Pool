@@ -17,7 +17,7 @@
         "file": "./litecoin.json"
         
     },
-    "litecoinPoolEnabled": "0"
+    "litecoinPoolEnabled": 0,
     "marscoinPoolConfig": {
         
         "file": "marscoin.json"
