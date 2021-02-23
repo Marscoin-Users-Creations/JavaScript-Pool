@@ -67,6 +67,11 @@ function removingCoinsToAccount() {
     
     
 };
+function sendingCoinsToAddress() {
+    
+    
+    
+};
 
 
 // main function
