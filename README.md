@@ -7,9 +7,15 @@ This is the Official Repository of the JavaScript Pool made for the MarsCoin, th
 The JavaScript Pool can be connected to a wallet of :
 
 Bitcoin ( BTC )
+
 Ethereum ( ETH )
+
 Liberty Coin ( LEYC )
+
 Litecoin ( LTC )
+
 Marscoin ( MARS )
+
 Megacoin ( MEGA )
+
 UraniumX ( URX )
