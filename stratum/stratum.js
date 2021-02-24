@@ -1,6 +1,6 @@
 // default requires
 
-
+var stratumJson = require("./stratum.json");
 
 
 // default functions
