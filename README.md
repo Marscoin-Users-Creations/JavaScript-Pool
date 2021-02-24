@@ -8,11 +8,23 @@ The JavaScript Pool can be connected to a wallet of :
 
 Bitcoin ( BTC )
 
+Bitcoin Cash ( BCH )
+
+Bitcoin Gold ( BTG )
+
 Ethereum ( ETH )
+
+Ethereum Classic ( ETC )
+
+Ethereum Gold ( ETG )
 
 Liberty Coin ( LEYC )
 
 Litecoin ( LTC )
+
+Litecoin Cash ( LCC )
+
+Litecoin Gold ( LTG )
 
 Marscoin ( MARS )
 
