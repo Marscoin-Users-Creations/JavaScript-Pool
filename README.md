@@ -12,6 +12,8 @@ Bitcoin Cash ( BCH )
 
 Bitcoin Gold ( BTG )
 
+Dogecoin ( DOGE )
+
 Ethereum ( ETH )
 
 Ethereum Classic ( ETC )
@@ -27,6 +29,8 @@ Litecoin Cash ( LCC )
 Litecoin Gold ( LTG )
 
 Marscoin ( MARS )
+
+Mooncoin ( MOON )
 
 Megacoin ( MEGA )
 
