@@ -15,7 +15,17 @@ function sendingConnection() {
     
     
 };
+function decodingDatasReceived() {
+    
+    
+    
+};
 function receivingDatas() {
+    
+    
+    
+};
+function codingDatasSending() {
     
     
     
