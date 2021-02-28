@@ -10,10 +10,11 @@
         
         
     },
+    "blocktime": 60,
     "blockversion": "",
     "maxblocktransactions": "",
     "nextblockhash": "",
-    "nextblocknumber": ""
+    "nextblocknumber": "",
     "previousblockhash": ""
     
 }
