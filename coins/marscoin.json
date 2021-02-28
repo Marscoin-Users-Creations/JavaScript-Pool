@@ -1,0 +1,42 @@
+{
+    
+    "version": "",
+    "previousblockhash": "",
+    "transactions": [
+        {
+            
+            "data": "",
+            "hash": "",
+            "depends": [
+                
+                
+                
+            ],
+            "fee": "",
+            "sigops": "",
+            "required": ""
+            
+        }
+    ],
+    "coinbaseaux": {
+        
+        "flags": ""
+        
+    },
+    "coinbasevalue": "",
+    "coinbasetxn": "",
+    "target": "",
+    "mintime": "61,649475102",
+    "mutable": [
+        
+        
+        
+    ],
+    "noncerange": "",
+    "sigoplimit": "",
+    "sizelimit": "",
+    "curtime": "",
+    "bits": "",
+    "height": ""
+    
+}
