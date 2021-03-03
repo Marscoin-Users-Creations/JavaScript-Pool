@@ -2,6 +2,7 @@
 
 var fs = require("fs");
 
+var bannedIps = require("../ips/banned.json");
 var ipsDb = require("./ipsDb.json");
 
 
@@ -23,6 +24,11 @@ function lookInDatabaseWhitelistedIps() {
 
 function firewall() {
     
-    
+    var newConnection = "";
+    if (newConnection.is_in(bannedIps.ipsBanned)) {
+        
+        
+        
+    };
     
 };
