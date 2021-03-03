@@ -24,10 +24,11 @@ function lookInDatabaseWhitelistedIps() {
 
 function firewall() {
     
-    var newConnection = "";
-    if (newConnection.is_in(bannedIps.ipsBanned)) {
+    var newConnectionIp = "";
+    if (newConnectionIp.is_in(bannedIps.ipsBanned)) {
         
-        
+        refuseConnection();
+        Console.Log("A banned IP tried to connect to the pool, connection refused the ( IP : " +newConnectionIp +" ).");
         
     };
     
