@@ -2,6 +2,8 @@
 
 This is the Official Repository of the JavaScript Pool made for the MarsCoin, the Pool can also be connected to some other cryptocurrencys.
 
+## The pool does not work for the moment, it's still in development
+
 ## JavaScript Pool Donation Addresses : 
 
 BTC  : 139ESWHWxSkXhsXXBRvWs9EvsvqDWkz6hQ
