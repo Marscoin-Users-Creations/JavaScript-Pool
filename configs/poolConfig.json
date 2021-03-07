@@ -1,32 +1,49 @@
 {
     
-    "bitcoinPoolConfig": {
-        
-        "file": "./bitcoin.json"
+    "bitcoinPool": {
+        "algo": "scrypt",
+        "walletAddress": "",
+        "walletRpcPort": 8332
         
     },
     "bitcoinPoolEnabled": 0,
-    "ethereumPoolConfig": {
+    "ethereumPool": {
         
-        "file": "./ethereum.json"
+        "algo": "eth",
+        "walletAddress": "",
+        "walletRpcPort": 8545
         
     },
     "ethereumPoolEnabled": 0,
-    "litecoinPoolConfig": {
+    "litecoinPool": {
         
-        "file": "./litecoin.json"
+        "algo": "scrypt",
+        "walletAddress": "",
+        "walletRpcPort": 10332
         
     },
     "litecoinPoolEnabled": 0,
-    "marscoinPoolConfig": {
+    "marscoinPool": {
         
-        "file": "marscoin.json"
+        "algo": "scrypt",
+        "walletAddress": "",
+        "walletRpcPort": 0
         
     },
     "marscoinPoolEnabled": 0,
-    "uraniumxPoolConfig": {
+    "spacecoinPool": {
         
-        "file": "./uraniumx.json"
+        "algo": "",
+        "walletAddress": "",
+        "walletRpcPort": 0
+        
+    },
+    "spacecoinPoolEnabled": 0,
+    "uraniumxPool": {
+        
+        "algo": "",
+        "walletAddress": "",
+        "walletRpcPort": 0
         
     },
     "uraniumxPoolEnabled": 0
