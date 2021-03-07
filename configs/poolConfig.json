@@ -15,6 +15,14 @@
         
     },
     "ethereumPoolEnabled": 0,
+    "libertycoinPool": {
+        
+        "algo": "leya",
+        "walletAddress": "",
+        "walletRpcPort": "15002"
+        
+    },
+    "libertycoinPoolEnabled": "0",
     "litecoinPool": {
         
         "algo": "scrypt",
