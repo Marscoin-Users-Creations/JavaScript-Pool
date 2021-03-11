@@ -35,6 +35,8 @@ Litecoin ( LTC )
 
 Litecoin Cash ( LCC )
 
+Litecoin Classic ( LTCC )
+
 Litecoin Gold ( LTG )
 
 Marscoin ( MARS )
