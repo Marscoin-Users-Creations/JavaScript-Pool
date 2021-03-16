@@ -2,9 +2,6 @@
 
 var discord = require("discord.js");
 var fs = require("fs");
-var http = require("http");
-var https = require("https");
-var url = require("url");
 
 var algorithms = require("./algorithms/algorithms.js");
 var poolConfig = require("./configs/poolConfig.json");
@@ -78,6 +75,6 @@ function sendingCoinsToAddress() {
 
 function main() {
     
-    
+    var blocksMining = 0;
     
 };
