@@ -75,6 +75,7 @@ function sendingCoinsToAddress() {
 
 function main() {
     
+    var actualBlock = "none";
     var blocksMining = 0;
     
 };
