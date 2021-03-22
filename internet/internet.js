@@ -27,7 +27,7 @@ internetServer.listen(internetServerPort, internetServerAddress);
 var internetSocket = new net.Socket();
 function receivingConnection(internetServer.connection.) {
     
-    for (internetSocket.connection.remoteAddress in ipsBanned) {
+    if (internetSocket.connection.remoteAddress in ipsBanned) {
         
         Console.log("A banned IP tried to connect to the Pool !");
         Console.log("\nThe IP is " +internetSocket.connection.remoteAddress +" : " +internetSocket.connection.remotePort +" .");
@@ -35,6 +35,7 @@ function receivingConnection(internetServer.connection.) {
     } else {
         
         Console.log("The device who is connected is not in the Pool blacklist, sending the datas to it !");
+        internetSocket.write();
         
     };
     
