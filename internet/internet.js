@@ -8,6 +8,7 @@ var ipsWhitelist = require("../ips/whitelist.json");
 
 // internet vars
 
+var datasToSendToMiner = "";
 var internetServerAddress = "127.0.0.1";
 var internetServerHosted = 1;
 var internetServerPort = 30000;
@@ -35,7 +36,7 @@ function receivingConnection(internetServer.connection.) {
     } else {
         
         Console.log("The device who is connected is not in the Pool blacklist, sending the datas to it !");
-        internetSocket.write();
+        internetSocket.write(datasToSendToMiner);
         
     };
     
