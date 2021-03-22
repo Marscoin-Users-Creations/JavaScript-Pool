@@ -21,13 +21,6 @@ var marsInternetConnectionsAllowed = 1;
 
 var internetServer = net.createServer(function (internetSocket) {
     
-    
-    
-});
-internetServer.listen(internetServerPort, internetServerAddress);
-var internetSocket = new net.Socket();
-function receivingConnection(internetServer.connection.) {
-    
     if (internetSocket.connection.remoteAddress in ipsBanned) {
         
         Console.log("A banned IP tried to connect to the Pool !");
@@ -40,4 +33,6 @@ function receivingConnection(internetServer.connection.) {
         
     };
     
-};
+});
+internetServer.listen(internetServerPort, internetServerAddress);
+var internetSocket = new net.Socket();
