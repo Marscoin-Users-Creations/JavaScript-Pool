@@ -1,33 +1,22 @@
 // default requires
 
-var discord = require("discord.js");
 var fs = require("fs");
+var http = require("http");
+var net = require("net");
+var url = require("url");
 
-var algorithms = require("./algorithms/algorithms.js");
-var poolConfig = require("./configs/poolConfig.json");
-var databases = require("./databases/databases.js");
-var firewall = require("./firewall/firewall.js");
-var internet = require("./internet/internet.js");
-var miners = require("./miners.js");
-var wallet = require("./wallet/wallet.js");
-var website = require("./website/website.js");
+// wallet connection
 
-
-// main vars
-
-var actualBlockDatas = "none";
-var blocksMining = 0;
-var poolCanBeStarted = 1;
-
-
-// main function
-
-function main() {
+function internet() {
     
-    if (poolCanBeStarted = 1) {
-        
-        
-        
-    };
+    
     
 };
+
+// website function
+
+var website = http.createServer(function (req, res) => {
+    
+    var websitePage = url.parse(req.res).pathname;
+    
+});
