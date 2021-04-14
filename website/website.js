@@ -9,6 +9,7 @@ var homePage = fs.readFile("./pages/home.html", "utf-8");
 var httpServerConfig = require("./httpServerConfig.json");
 var httpsServerConfig = require("./httpsServerConfig.json");
 var loginPage = fs.readFile("./pages/login.html", "utf-8");
+var minersPage = fs.readFile("./pages/miners.html", "utf-8");
 var websiteConfig = require("../configs/config.json");
 
 
@@ -61,7 +62,18 @@ if (websiteConfig.httpsServerEnabled = 1) {
             httpsRes.write(loginPage);
             
         };
-        
+        if (httpsPage == "/miners") {
+            
+            httpsRes.writeHead(200, {"Content-Type": "text/html"});
+            httpsRes.write(minersPage);
+            
+        };
+        if (httpsPage == "/stats") {
+            
+            httpsRes.writeHead(200, {});
+            httsRes.write();
+            
+        };
         
     }).listen(httpsServerConfig.httpsServerPort);
     
