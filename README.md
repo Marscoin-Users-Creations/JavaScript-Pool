@@ -41,8 +41,8 @@ Litecoin Gold ( LTG )
 
 Marscoin ( MARS )
 
-Mooncoin ( MOON )
-
 Megacoin ( MEGA )
+
+Mooncoin ( MOON )
 
 UraniumX ( URX )
