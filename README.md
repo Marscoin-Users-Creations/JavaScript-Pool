@@ -19,6 +19,8 @@ Bitcoin ( BTC )
 
 Bitcoin Cash ( BCH )
 
+Bitcoin Classic ( BXC )
+
 Bitcoin Gold ( BTG )
 
 Dogecoin ( DOGE )
