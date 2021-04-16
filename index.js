@@ -167,48 +167,68 @@ var poolEnabled = 1;
 // default rpc commands vars
 
 var getDifficulty = '{"jsonrpc": "1.0", "method": "getdifficulty", "params": [], "id": ""}';
-var requestWork = '{"jsonrpc": "1.0", "method": "getwork", "params": [] "id": ""}';
-var sendCoins = '{"jsonrpc"! "1.0", "method": "sendcoins", "params": ["from": "' +fromWalletAddress +'", "to": "' +toWalletAddress +'", "amount": ' +coinsAmount'], "id": "anything"}';
+var getWork = '{"jsonrpc": "1.0", "method": "getwork", "params": [], "id": ""}';
+var sendCoins = '{"jsonrpc": "1.0", "method": "", "params": ["from": "' +fromWalletAddress +'", "to": "' +toWalletAddress +'", "amount": ' +coinsAmount'], "id": "anything"}';
 
-// coins valid shares and blocks vars
+// coins vars
 
 var bitcoinTotalValidShares = 0,
     bitcoinValidBlocks = 0,
     bitcoinValidShares = 0,
+    bitcoinWalletAddress = "127.0.0.1",
+    bitcoinWalletPort = 8332,
     bitcoincashTotalValidShares = 0,
     bitcoincashValidBlocks = 0,
     bitcoincashValidShares = 0,
+    bitcoincashWalletAddress = "127.0.0.1",
+    bitcoincashWalletPort = 8332,
     bitcoingoldTotalValidShares = 0,
     bitcoingoldValidBlocks = 0,
     bitcoingoldValidShares = 0,
-    dogecoinTotalValidShares = 0,
-    dogecoinValidBlocks = 0,
-    dogecoinValidShares = 0;
-
-// wallet address and port
-
-var bitcoinWalletAddress = "127.0.0.1",
-    bitcoinWalletPort = 8332,
-    bitcoincashWalletAddress = "127.0.0.1",
-    bitcoincashWalletPort = 8332,
     bitcoingoldWalletAddress = "127.0.0.1",
     bitcoingoldWalletPort = 8332,
+    dogecoinTotalValidShares = 0,
+    dogecoinValidBlocks = 0,
+    dogecoinValidShares = 0,
     dogecoinWalletAddress = "127.0.0.1",
     dogecoinWalletPort = 22555,
+    ethereumTotalValidShares = 0,
+    ethereumValidBlocks = 0,
+    ethereumValidShares = 0,
     ethereumWalletAddress = "127.0.0.1",
     ethereumWalletPort = 8545,
+    ethereumclassicTotalValidShares = 0,
+    ethereumclassicValidBlocks = 0,
+    ethereumclassicValidShares = 0,
     ethereumclassicWalletAddress = "127.0.0.1",
     ethereumclassicWalletPort = 8545,
+    litecoinTotalValidShares = 0,
+    litecoinValidBlocks = 0,
+    litecoinValidShares = 0,
     litecoinWalletAddress = "127.0.0.1",
     litecoinWalletPort = 9432,
+    litecoincashTotalValidShares = 0,
+    litecoincashValidBlocks = 0,
+    litecoincashValidShares = 0,
     litecoincashWalletAddress = "127.0.0.1",
     litecoincashWalletPort = 62457,
+    marscoinTotalValidShares = 0,
+    marscoinValidShares = 0,
+    marscoinValidBlocks = 0,
     marscoinWalletAddress = "127.0.0.1",
     marscoinWalletPort = 8332,
+    megacoinTotalValidShares = 0,
+    megacoinValidBlocks = 0,
+    megacoinValidShares = 0,
     megacoinWalletAddress = "127.0.0.1",
-    megacoinWalletPort = 8332;
+    megacoinWalletPort = 8332,
+    uraniumxTotalValidShares = 0,
+    uraniumxValidBlocks = 0,
+    uraniumxValidShares = 0,
+    uraniumxWalletAddress = "127.0.0.1",
+    uraniumxWalletPort = 8332;
 
-// web pages
+// web pages vars
 
 var dashboardPage = fs.readFile("./html/dashboard.html", "utf-8");
 var homePage = fs.readFile("./html/home.html", "utf-8");
@@ -216,14 +236,19 @@ var minersPage = fs.readFile("./html/miners.html", "utf-8");
 
 // default functions
 
-function getBlockNumberFromWallet() {
+function getBlockNumberFromWallet(var blockNumber) {
     
-    netClient.send(chosenCoinWalletAddress, chosenCoinWalletPort, {"method": "getwork", "params": [], "id": "anything"});
+    netClient.send(chosenCoinWalletAddress, chosenCoinWalletPort, );
     
 };
-function getWorkFromWallet() {
+function getWorkFromWallet(var workToDo) {
     
-    netClient.send(chosenCoinWalletAddress, chosenCoinWalletPort, {'"method": "sendwork", "params": [' +chosenCoinWorkDone +'], "id": "anything"'});
+    netClient.send(chosenCoinWalletAddress, chosenCoinWalletPort, {'"method": "getwork", "params": [], "id": ""'});
+    
+};
+function sendWorkDoneToWallet(var workDone) {
+    
+    netClient.send(chosenCoinWalletAddress, chosenCoinWalletPort, {'"method": "sendwork", "params": ["work": "' +workDone +'"], "id": ""'});
     
 };
 
@@ -247,21 +272,36 @@ if (poolEnabled = 1) {
     
     if (config.bitcoin.miningEnabled = 1) {
         
-        var bitcoinPool = net.createServer();
+        var bitcoinPool = Stratum.createServer();
+        var connectoToClient = bitcoinNetClient.connect();
         
     };
     if (config.bitcoincash.miningEnabled = 1) {
         
-        var bitcoincashPool = net.createServer();
+        var bitcoincashPool = Stratum.createServer({
+            
+            "address": config.bitcoincash.bcc.bccPool.walletAddress,
+            "
+            
+        });
         
     };
     if (config.bitcoingold.miningEnabled = 1) {
         
         var connectToBitcoinGoldPool = netClient.connect();
         var bitcoingoldPool = Stratum.createServer(config.bitcoingold.btgPool);
-        bitcoingoldPool.on("share", function(isValidShare, isValidBlock, date) {
+        bitcoingoldPool.on("share", function(isBitcoingoldValidShare, isBitcoingoldValidBlock, date) {
             
-            
+            if (isBitcoingoldValidShare) {
+                
+                
+                
+            };
+            if (isBitcoingoldValidBlock) {
+                
+                
+                
+            };
             
         });
         
