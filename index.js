@@ -169,30 +169,44 @@ var poolEnabled = 1;
 var getDifficulty = '{"jsonrpc": "1.0", "method": "getdifficulty", "params": [], "id": ""}';
 var requestWork = '{"jsonrpc": "1.0", "method": "getwork", "params": [] "id": ""}';
 var sendCoins = '{"jsonrpc"! "1.0", "method": "sendcoins", "params": ["from": "' +fromWalletAddress +'", "to": "' +toWalletAddress +'", "amount": ' +coinsAmount'], "id": "anything"}';
-var sendWork = '{"jsonrpc": "1.0", "method": "sendresult", "params": ["result": "' +workDone +'"], "id": ""}';
+
+// coins valid shares and blocks vars
+
+var bitcoinTotalValidShares = 0,
+    bitcoinValidBlocks = 0,
+    bitcoinValidShares = 0,
+    bitcoincashTotalValidShares = 0,
+    bitcoincashValidBlocks = 0,
+    bitcoincashValidShares = 0,
+    bitcoingoldTotalValidShares = 0,
+    bitcoingoldValidBlocks = 0,
+    bitcoingoldValidShares = 0,
+    dogecoinTotalValidShares = 0,
+    dogecoinValidBlocks = 0,
+    dogecoinValidShares = 0;
 
 // wallet address and port
 
-var bitcoinWalletAddress = "127.0.0.1";
-var bitcoinWalletPort = 8332;
-var bitcoincashWalletAddress = "127.0.0.1";
-var bitcoincashWalletPort = 8332;
-var bitcoingoldWalletAddress = "127.0.0.1";
-var bitcoingoldWalletPort = 8332;
-var dogecoinWalletAddress = "127.0.0.1";
-var dogecoinWalletPort = 22555;
-var ethereumWalletAddress = "127.0.0.1";
-var ethereumWalletPort = 8545;
-var ethereumclassicWalletAddress = "127.0.0.1";
-var ethereumclassicWalletPort = 8545;
-var litecoinWalletAddress = "127.0.0.1";
-var litecoinWalletPort = 9432;
-var litecoincashWalletAddress = "127.0.0.1";
-var litecoincashWalletPort = 62457;
-var marscoinWalletAddress = "127.0.0.1";
-var marscoinWalletPort = 8332;
-var megacoinWalletAddress = "127.0.0.1";
-var megacoinWalletPort = 8332;
+var bitcoinWalletAddress = "127.0.0.1",
+    bitcoinWalletPort = 8332,
+    bitcoincashWalletAddress = "127.0.0.1",
+    bitcoincashWalletPort = 8332,
+    bitcoingoldWalletAddress = "127.0.0.1",
+    bitcoingoldWalletPort = 8332,
+    dogecoinWalletAddress = "127.0.0.1",
+    dogecoinWalletPort = 22555,
+    ethereumWalletAddress = "127.0.0.1",
+    ethereumWalletPort = 8545,
+    ethereumclassicWalletAddress = "127.0.0.1",
+    ethereumclassicWalletPort = 8545,
+    litecoinWalletAddress = "127.0.0.1",
+    litecoinWalletPort = 9432,
+    litecoincashWalletAddress = "127.0.0.1",
+    litecoincashWalletPort = 62457,
+    marscoinWalletAddress = "127.0.0.1",
+    marscoinWalletPort = 8332,
+    megacoinWalletAddress = "127.0.0.1",
+    megacoinWalletPort = 8332;
 
 // web pages
 
@@ -234,42 +248,67 @@ if (poolEnabled = 1) {
     if (config.bitcoin.miningEnabled = 1) {
         
         var bitcoinPool = net.createServer();
-        bitcoinPoolNet.listen(config.bitcoin.bitcoinPoolPort);
         
     };
     if (config.bitcoincash.miningEnabled = 1) {
         
         var bitcoincashPool = net.createServer();
-        bitcoincashPool.listen(config.bitcoincash.bitcoincashPoolPort);
         
     };
     if (config.bitcoingold.miningEnabled = 1) {
         
-        var bitcoingoldPool = net.createServer();
-        bitcoingoldPool.listen(config.bitcoingold.bitcoingoldPoolPort);
+        var connectToBitcoinGoldPool = netClient.connect();
+        var bitcoingoldPool = Stratum.createServer(config.bitcoingold.btgPool);
+        bitcoingoldPool.on("share", function(isValidShare, isValidBlock, date) {
+            
+            
+            
+        });
         
     };
     if (config.dogecoin.miningEnabled = 1) {
         
         var dogecoinPool = net.createServer();
-        dogecoinPool.listen(config.dogecoin.dogecoinPoolPort);
         
     };
     if (config.ethereum.miningEnabled = 1) {
         
-        var ethereumPool = net.createServer();
-        ethereumPool.listen(config.ethereum.ethereumPoolPort);
+        var connectToWallet = netClient.connect();
+        var ethereumPool = Stratum.createServer(config.ethereum.ethPool);
+        ethereumPool.on("share", function (isValidShare, isValidBlock, date) {
+            
+            if (isValidShare) {
+                
+                ethereumValidShares = ethereumValidShares +1;
+                console.log("Ethereum share " +ethereumValidShares +" found !");
+                
+            };
+            if (isValidBlock) {
+                
+                ethereumValidBlocks = ethereumValidBlocks +1;
+                console.log("Ethereum block " +ethereumValidBlocks +" found !");
+                
+            };
+            
+        });
         
     };
     if (config.ethereumclassic.miningEnabled = 1) {
         
+        var connectToWallet = netClient.connect({address: ethereumclassicWalletAddress, port: ethereumclassicWalletPort});
         var ethereumclassicPool = Stratum.createPool(config.ethereumclassic.etcPool);
         ethereumclassicPool.on("share", function(isValidShare, isValidBlock, date) {
             
             if (isValidShare) {
                 
-                ethereumValidShares = ethereumValidShares +1;
-                console.log("Share " +ethereumValidShares +" found");
+                ethereumclassicValidShares = ethereumclassicValidShares +1;
+                console.log("Ethereum classic share " +ethereumclassicValidShares +" found !");
+                
+            };
+            if (isValidBlock) {
+                
+                ethereumclassicValidBlocks = ethereumclassicValidBlocks +1;
+                console.log("Ethereum classic block " +ethereumclassicValidBlocks +" found !");
                 
             };
             
@@ -287,9 +326,9 @@ if (poolEnabled = 1) {
         var connectToWallet = netClient.connect({address: config.litecoin.walletAddress, port: config.litecoin.walletPort});
         var litecoinPool = Stratum.createPool({
             
-            "address": config.litecoin.litecoinPool.walletAddress,
-            "algorithm": config.litecoin.litecoinPool.algorithm,
-            "coin": config.litecoin.litecoinPool.coinName
+            "address": config.litecoin.ltcPool.walletAddress,
+            "algorithm": config.litecoin.ltcPool.algorithm,
+            "coin": config.litecoin.ltcPool.coinName
             
         });
         
@@ -301,24 +340,74 @@ if (poolEnabled = 1) {
     };
     if (config.marscoin.miningEnabled = 1) {
         
-        
+        var connectToMarscoinWallet = netClient.connect(config.marscoin.walletAddress, config.marscoin.walletPort);
+        var marscoinPool = Stratum.createPool({
+            
+            "address": config.marscoin.marsPool.walletAddress,
+            "algorithm": config.marscoin.marsPool.algorithm,
+            "coin": config.marscoin.marsPool.coinName
+            
+        });
+        marscoinPool.on("share", function(isMarscoinValidShare, isMarscoinValidBlock, marscoinDate) {
+            
+            if (isMarscoinValidShare) {
+                
+                marscoinValidShares = marscoinValidShares +1;
+                console.log("Found the share number " +marscoinValidShares +" !");
+                
+            };
+            if (isMarscoinValidBlock) {
+                
+                marscoinValidBlocks = marscoinValidBlocks +1;
+                console.log("Found the block number " +marscoinValidBlocks +" with " +marscoinValidShares +" on it !");
+                marscoinTotalValidShares = marscoinTotalValidShares + marscoinValidShares;
+                marscoinValidShares = 0;
+                
+            };
+            
+        });
         
     };
     if (config.megacoin.miningEnabled = 1) {
         
-        var connectToWallet = netClient.connect();
+        var connectToWallet = netClient.connect(config.megacoin.walletAddress, config.megacoin.walletPort);
         var megacoinPool = Stratum.createPool({
             
-            "address": config.megacoin.megacoinPool.walletAddress,
-            "algorithm": config.megacoin.megacoinPool.algorithm,
-            "coin": config.megacoin.megacoinPool.coinName
+            "address": config.megacoin.megaPool.walletAddress,
+            "algorithm": config.megacoin.megaPool.algorithm,
+            "coin": config.megacoin.megaPool.coinName
+            
+        });
+        megacoinPool.on("share", function (isMegacoinValidShare, isMegacoinValidBlock, megacoinDate) {
+            
+            if (isMegacoinValidShare) {
+                
+                megacoinValidShares = megacoinValidShares +1;
+                console.log("Found the share number " +megacoinValidShares +" !");
+                
+            };
+            if (isMegacoinValidBlock) {
+                
+                megacoinValidBlocks = megacoinValidBlocks +1;
+                console.log("Found the block number " +megacoinValidBlocks +" with " +megacoinValidShares +" on it !");
+                megacoinTotalValidShares = megacoinTotalValidShares + megacoinValidShares;
+                megacoinValidShares = 0;
+                
+            };
             
         });
         
     };
     if (config.uraniumx.miningEnabled = 1) {
         
-        
+        var connectionToUraniumxWallet = netClient.connect(config.uraniumx.walletAddress, config.uraniumx.walletPort);
+        var uraniumxPool = Stratum.createPool({
+            
+            "address": config.uraniumx.urxPool.walletAddress,
+            "algorithm": config.uraniumx.urxPool.algorithm,
+            "coin": config.uraniumx.urxPool.coinNme
+            
+        });
         
     };
     
