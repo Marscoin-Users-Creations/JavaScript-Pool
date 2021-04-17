@@ -14,17 +14,25 @@ var config = {
         "blockNumber": 0,
         "btcPool": {
             
-            
+            "address": "",
             
         },
         "difficulty": 0,
         "miningEnabled": 1,
-        "symbol": "BTC"
+        "symbol": "BTC",
+        "walletIp": "127.0.0.1",
+        "walletPort": 8338
         
     },
     "bitcoinclassic": {
         
         "algo": "sha256",
+        "blockNumber": 0,
+        "bxcPool": {
+            
+            "address": "",
+            
+        },
         "difficulty": 0,
         "miningEnabled": 1,
         "symbol": "BXC"
@@ -50,13 +58,6 @@ var config = {
         
         "algo": "ethash",
         "difficulty": 0,
-        "ethPool": {
-            
-            "coin": "ethereum",
-            "address": "walletAddress",
-            "blockRefreshInterval": 2000,
-            
-        },
         "miningEnabled": 1,
         "symbol": "ETH"
         
@@ -65,59 +66,8 @@ var config = {
         
         "algo": "etchash",
         "difficulty": 0,
-        "etcPool": {
-            
-            "coin": "ethereum classic",
-            "address": "",
-            "blockRefreshInterval": 2000,
-            "txRefreshInterval": 2000,
-            "jobRebroadcastTimeout": 30,
-            "connectionTimeout": 300,
-            "emitInvalidBlockHashes": false,
-            "shareVariancePercent": 10,
-            "tcpProxyProtocol": false,
-            "banning": {
-                
-                "enabled": true,
-                "time": 300,
-                "invalidPercent": 60,
-                "checkTreshold": 100,
-                "purgeInterval": 300
-                
-            },
-            "ports": {
-                
-                "10000": {
-                    
-                    "diff": "1",
-                    "varDiff": {
-                        
-                        "minDiff": 1,
-                        "maxDiff": 100000000000000,
-                        "targetTime": 10,
-                        "regargetTime": 60,
-                        "variancePercent": 0
-                        
-                    }
-                    
-                },
-                "11001": {
-                    
-                    "diff": 10
-                    
-                }
-                
-            },
-            "daemons": [{
-                
-                "host": "127.0.0.1",
-                "port": ""
-                
-            }]
-            
-        },
         "miningEnabled": 1,
-        "symbol": "ETC"
+        "symbol": "ECC"
         
     },
     "litecoin": {
@@ -272,34 +222,81 @@ if (poolEnabled = 1) {
     
     if (config.bitcoin.miningEnabled = 1) {
         
-        var bitcoinPool = Stratum.createServer();
-        var connectoToClient = bitcoinNetClient.connect();
+        var bitcoinPool = Stratum.createServer({
+            
+            "address": config.bitcoin.btcPool.address,
+            "algorithm": '"' +config.bitcoin.btcPool.algo +'"',
+            "
+            
+        });
+        bitcoinPool.on("share", function(isBitcoinValidShare, isBitcoinValidBlock, date) {
+            
+            if (isBitcoinValidShare) {
+                
+                bitcoinValidShares = bitcoinValidShares +1;
+                console.log("BITCOIN : Share number " +bitcoinValidShares +" found !");
+                
+            };
+            if (isBitcoinValidBlock) {
+                
+                bitcoinTotalValidShares = bitcoinTotalValidShares +bitcoinValidShares;
+                bitcoinValidBlocks = bitcoinValidBlocks +1;
+                console.log("BITCOIN : Block number " +bitcoinValidBlocks +" with " +bitcoinValidShares +" found !");
+                bitcoinValidShares = 0;
+                
+            };
+            
+        });
         
     };
     if (config.bitcoincash.miningEnabled = 1) {
         
         var bitcoincashPool = Stratum.createServer({
             
-            "address": config.bitcoincash.bcc.bccPool.walletAddress,
-            "
+            "address": config.bitcoincash.bccPool.address
+            
+        });
+        bitcoincashPool.on("share", function (isBitcoincashValidShare, isBitcoincashValidBlock, date) {
+            
+            if (isBitcoincashValidShare) {
+                
+                bitcoincashValidShares = bitcoincashValidShares + 1;
+                console.log("BITCOIN CASH : Share number " +bitcoincashValidShares +" found !");
+                
+            };
+            if (isBitcoincashValidBlock) {
+                
+                bitcoincashTotalValidShares = bitcoincashTotalValidShares + bitcoincashValidShares;
+                bitcoincashValidBlocks = bitcoincashValidBlocks +1;
+                console.log("BITCOIN CASH : Block number " +bitcoincashValidBlocks +" with " +bitcoincashValidShares +" shares found !");
+                bitcoincashValidShares = 0;
+                
+            };
             
         });
         
     };
     if (config.bitcoingold.miningEnabled = 1) {
         
-        var connectToBitcoinGoldPool = netClient.connect();
-        var bitcoingoldPool = Stratum.createServer(config.bitcoingold.btgPool);
+        var bitcoingoldPool = Stratum.createServer({
+            
+            "address": config.bitcoingold.btgPool.address
+            
+        });
         bitcoingoldPool.on("share", function(isBitcoingoldValidShare, isBitcoingoldValidBlock, date) {
             
             if (isBitcoingoldValidShare) {
                 
-                
+                bitcoingoldValidShares = bitcoingoldValidShares +1;
+                console.log("BITCOIN GOLD : Share number " +bitcoingoldValidShares =" found !");
                 
             };
             if (isBitcoingoldValidBlock) {
                 
-                
+                bitcoingoldTotalValidShares = bitcoingoldTotaliValidShares + bitcoingoldValidShares;
+                bitcoingoldValidBlocks = bitcoingoldValidBlocks +1;
+                console.log("BITCOIN GOLD : Block number " +bitcoingoldValidBlocks +" with " +bitcoingoldValidShares +" shares found !");
+                bitcoingoldValidShares = 0;
                 
             };
             
@@ -308,25 +305,49 @@ if (poolEnabled = 1) {
     };
     if (config.dogecoin.miningEnabled = 1) {
         
-        var dogecoinPool = net.createServer();
+        var dogecoinPool = Stratum.createServer({
+            
+            
+            
+        });
+        dogecoinPool.on("share", function(isDogecoinValidShare, isDogecoinValidBlock, date) {
+            
+            if (isDogecoinValidShare) {
+                
+                dogecoinValidShares = dogecoinValidShares +1;
+                console.log("DOGECOIN : Share number " +dogecoinValidShares +" found !");
+                
+            };
+            if (isDogecoinValidBlock) {
+                
+                dogecoinTotalValidShares = dogecoinTotalValidShares +dogecoinValidShares;
+                dogecoinValidBlocks = dogecoinValidBlocks +1;
+                console.log("DOGECOIN : Block number " +dogecoinValidBlocks +" with " +dogecoinValidShares +" shares found !");
+                dogecoinValidShares = 0;
+                
+            };
+            
+        });
         
     };
     if (config.ethereum.miningEnabled = 1) {
         
         var connectToWallet = netClient.connect();
         var ethereumPool = Stratum.createServer(config.ethereum.ethPool);
-        ethereumPool.on("share", function (isValidShare, isValidBlock, date) {
+        ethereumPool.on("share", function (isEthereumValidShare, isEthereumValidBlock, date) {
             
-            if (isValidShare) {
+            if (isEthereumValidShare) {
                 
                 ethereumValidShares = ethereumValidShares +1;
-                console.log("Ethereum share " +ethereumValidShares +" found !");
+                console.log("ETHEREUM : Share number " +ethereumValidShares +" found !");
                 
             };
-            if (isValidBlock) {
+            if (isEthereumValidBlock) {
                 
+                ethereumTotalValidShares = ethereumTotalValidShares + ethereumValidShares;
                 ethereumValidBlocks = ethereumValidBlocks +1;
-                console.log("Ethereum block " +ethereumValidBlocks +" found !");
+                console.log("ETHEREUM : Block number " +ethereumValidBlocks +" with " +ethereumValidShares +" shares found !");
+                ethereumValidShares = 0;
                 
             };
             
@@ -342,13 +363,15 @@ if (poolEnabled = 1) {
             if (isValidShare) {
                 
                 ethereumclassicValidShares = ethereumclassicValidShares +1;
-                console.log("Ethereum classic share " +ethereumclassicValidShares +" found !");
+                console.log("ETHEREUM CLASSIC : Share number " +ethereumclassicValidShares +" found !");
                 
             };
             if (isValidBlock) {
                 
+                ethereumclassicTotalValidShares = ethereumclassicTotalValidBlocks +ethereumclassicValidShares;
                 ethereumclassicValidBlocks = ethereumclassicValidBlocks +1;
-                console.log("Ethereum classic block " +ethereumclassicValidBlocks +" found !");
+                console.log("ETHEREUM CLASSIC : Block number " +ethereumclassicValidBlocks +" with " +ethereumclassicValidShares  +" shares found !");
+                ethereumclassicValidShares = 0;
                 
             };
             
@@ -363,12 +386,28 @@ if (poolEnabled = 1) {
     };
     if (config.litecoin.miningEnabled = 1) {
         
-        var connectToWallet = netClient.connect({address: config.litecoin.walletAddress, port: config.litecoin.walletPort});
         var litecoinPool = Stratum.createPool({
             
             "address": config.litecoin.ltcPool.walletAddress,
             "algorithm": config.litecoin.ltcPool.algorithm,
             "coin": config.litecoin.ltcPool.coinName
+            
+        });
+        litecoinPool.on("share", function(isLitecoinValidShare, isLitecoinValidBlock, date) {
+            
+            if (isLitecoinValidShare) {
+                
+                
+                
+            };
+            if (isLitecoinValidBlock) {
+                
+                litecoinTotalValidShares = litecoinTotalValidShares +litecoinValidShares;
+                litecoinValidBlocks = litecoinValidBlocks +1;
+                console.log("LITECOIN : Block with " +litecoinValidShares +" shares found !");
+                litecoinValidShares = 0;
+                
+            };
             
         });
         
