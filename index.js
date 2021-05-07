@@ -6,119 +6,14 @@ var net = require("net");
 var url = require("url");
 
 var blockMining = null;
-var config = {
-    
-    "bitcoin": {
-        
-        "algo": "sha256",
-        "blockNumber": 0,
-        "btcPool": {
-            
-            "address": "",
-            
-        },
-        "difficulty": 0,
-        "miningEnabled": 1,
-        "symbol": "BTC",
-        "walletIp": "127.0.0.1",
-        "walletPort": 8338
-        
-    },
-    "bitcoinclassic": {
-        
-        "algo": "sha256",
-        "blockNumber": 0,
-        "bxcPool": {
-            
-            "address": "",
-            
-        },
-        "difficulty": 0,
-        "miningEnabled": 1,
-        "symbol": "BXC"
-        
-    },
-    "bitcoingold": {
-        
-        "algo": "Equihash_144_5",
-        "difficulty": 0,
-        "miningEnabled": 1,
-        "symbol": "BTG"
-        
-    },
-    "dogecoin": {
-        
-        "algo": "scrypt",
-        "difficulty": 0,
-        "dogecoinMiningEnabled": 1,
-        "symbol": "DOGE"
-        
-    },
-    "ethereum": {
-        
-        "algo": "ethash",
-        "difficulty": 0,
-        "miningEnabled": 1,
-        "symbol": "ETH"
-        
-    },
-    "ethereumclassic": {
-        
-        "algo": "etchash",
-        "difficulty": 0,
-        "miningEnabled": 1,
-        "symbol": "ECC"
-        
-    },
-    "litecoin": {
-        
-        "algo": "scrypt",
-        "difficulty": 1",
-        "miningEnabled": 1,
-        "symbol": "LTC"
-        
-    },
-    "litecoincash": {
-        
-        "algo": "",
-        "difficulty": 1",
-        "miningEnabled": 1,
-        "symbol": "LCC"
-        
-    },
-    "marscoin": {
-        
-        "algo": "scrypt",
-        "difficulty": 1",
-        "miningEnabled": 1,
-        "symbol": "MARS"
-        
-    },
-    "megacoin": {
-        
-        "algo": "Mega-Mec",
-        "difficulty": 1,
-        "miningEnabled": 1,
-        "symbol": "MEGA"
-        
-    },
-    "uaniumx": {
-        
-        "algo": "yespowerurx",
-        "difficulty": 1,
-        "miningEnabled": 1,
-        "symbol": "URX"
-        
-    }
-    
-};
+var config = require("./config.json");
 var poolEnabled = 1;
 
 // default rpc commands vars
 
 var getDifficulty = '{"jsonrpc": "1.0", "method": "getdifficulty", "params": [], "id": ""}';
 var getWork = '{"jsonrpc": "1.0", "method": "getwork", "params": [], "id": ""}';
-var sendCoins = '{"jsonrpc": "1.0", "method": "", "params": ["from": "' +fromWalletAddress +'", "to": "' +toWalletAddress +'", "amount": ' +coinsAmount'], "id": "anything"}';
+var sendCoinsToOneAddress = '{"jsonrpc": "1.0", "method": "", "params": ["from": "' +fromWalletAddress +'", "to": "' +toWalletAddress +'", "amount": ' +coinsAmount'], "id": "anything"}';
 
 // coins vars
 
