@@ -31,8 +31,6 @@ Ethereum Classic ( ETC )
 
 Ethereum Gold ( ETG )
 
-Liberty Coin ( LEY )
-
 Litecoin ( LTC )
 
 Litecoin Cash ( LCC )
