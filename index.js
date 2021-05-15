@@ -15,64 +15,6 @@ var getDifficulty = '{"jsonrpc": "1.0", "method": "getdifficulty", "params": [],
 var getWork = '{"jsonrpc": "1.0", "method": "getwork", "params": [], "id": ""}';
 var sendCoinsToOneAddress = '{"jsonrpc": "1.0", "method": "", "params": ["from": "' +fromWalletAddress +'", "to": "' +toWalletAddress +'", "amount": ' +coinsAmount'], "id": "anything"}';
 
-// coins vars
-
-var bitcoinTotalValidShares = 0,
-    bitcoinValidBlocks = 0,
-    bitcoinValidShares = 0,
-    bitcoinWalletAddress = "127.0.0.1",
-    bitcoinWalletPort = 8332,
-    bitcoincashTotalValidShares = 0,
-    bitcoincashValidBlocks = 0,
-    bitcoincashValidShares = 0,
-    bitcoincashWalletAddress = "127.0.0.1",
-    bitcoincashWalletPort = 8332,
-    bitcoingoldTotalValidShares = 0,
-    bitcoingoldValidBlocks = 0,
-    bitcoingoldValidShares = 0,
-    bitcoingoldWalletAddress = "127.0.0.1",
-    bitcoingoldWalletPort = 8332,
-    dogecoinTotalValidShares = 0,
-    dogecoinValidBlocks = 0,
-    dogecoinValidShares = 0,
-    dogecoinWalletAddress = "127.0.0.1",
-    dogecoinWalletPort = 22555,
-    ethereumTotalValidShares = 0,
-    ethereumValidBlocks = 0,
-    ethereumValidShares = 0,
-    ethereumWalletAddress = "127.0.0.1",
-    ethereumWalletPort = 8545,
-    ethereumclassicTotalValidShares = 0,
-    ethereumclassicValidBlocks = 0,
-    ethereumclassicValidShares = 0,
-    ethereumclassicWalletAddress = "127.0.0.1",
-    ethereumclassicWalletPort = 8545,
-    litecoinTotalValidShares = 0,
-    litecoinValidBlocks = 0,
-    litecoinValidShares = 0,
-    litecoinWalletAddress = "127.0.0.1",
-    litecoinWalletPort = 9432,
-    litecoincashTotalValidShares = 0,
-    litecoincashValidBlocks = 0,
-    litecoincashValidShares = 0,
-    litecoincashWalletAddress = "127.0.0.1",
-    litecoincashWalletPort = 62457,
-    marscoinTotalValidShares = 0,
-    marscoinValidShares = 0,
-    marscoinValidBlocks = 0,
-    marscoinWalletAddress = "127.0.0.1",
-    marscoinWalletPort = 8332,
-    megacoinTotalValidShares = 0,
-    megacoinValidBlocks = 0,
-    megacoinValidShares = 0,
-    megacoinWalletAddress = "127.0.0.1",
-    megacoinWalletPort = 8332,
-    uraniumxTotalValidShares = 0,
-    uraniumxValidBlocks = 0,
-    uraniumxValidShares = 0,
-    uraniumxWalletAddress = "127.0.0.1",
-    uraniumxWalletPort = 8332;
-
 // web pages vars
 
 var dashboardPage = fs.readFile("./html/dashboard.html", "utf-8");
@@ -115,40 +57,41 @@ var website = http.createServer(function (req, res) => {
 
 if (poolEnabled = 1) {
     
-    if (config.bitcoin.miningEnabled = 1) {
+    if (config.pools.bitcoin.enabled = 1) {
         
         var bitcoinPool = Stratum.createServer({
             
-            "address": config.bitcoin.btcPool.address,
-            "algorithm": '"' +config.bitcoin.btcPool.algo +'"',
-            "
+            "'address': ""config.pools.bitcoin.address,
+            "port": config.pools.bitcoin.address,
+            "algorithm": '"' +config.pools.bitcoin.algo +'"'
             
         });
         bitcoinPool.on("share", function(isBitcoinValidShare, isBitcoinValidBlock, date) {
             
             if (isBitcoinValidShare) {
                 
-                bitcoinValidShares = bitcoinValidShares +1;
-                console.log("BITCOIN : Share number " +bitcoinValidShares +" found !");
+                config.pools.bitcoin.validshares = config.pools.bitcoin.validshares +1;
+                console.log("BITCOIN : Share number " +config.pools.bitcoin.validshares +" found !");
                 
             };
             if (isBitcoinValidBlock) {
                 
-                bitcoinTotalValidShares = bitcoinTotalValidShares +bitcoinValidShares;
-                bitcoinValidBlocks = bitcoinValidBlocks +1;
-                console.log("BITCOIN : Block number " +bitcoinValidBlocks +" with " +bitcoinValidShares +" found !");
-                bitcoinValidShares = 0;
+                config.pools.bitcoin.totalvalidshares = config.pools.bitcoin.totalvalidshares +config.pools.bitcoin.validshares;
+                config.pools.bitcoin.validblocks = config.pools.bitcoin.validblocks +1;
+                console.log("BITCOIN : Block number " +config.pools.bitcoin.blocknumber +" with " +config.pools.bitcoin.validshares +" found !");
+                config.pools.bitcoin.validshares = 0;
                 
             };
             
         });
         
     };
-    if (config.bitcoincash.miningEnabled = 1) {
+    if (config.pools.bitcoincash.enabled = 1) {
         
         var bitcoincashPool = Stratum.createServer({
             
-            "address": config.bitcoincash.bccPool.address
+            "address: '" +config.pools.bitcoincash.address +"'",
+            "port": config.pools.bitcoincash.port
             
         });
         bitcoincashPool.on("share", function (isBitcoincashValidShare, isBitcoincashValidBlock, date) {
