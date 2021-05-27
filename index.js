@@ -242,68 +242,272 @@ var config = {
     
 };
 
+// work vars
+
+var workAsked = '{  }';
+var workDone = '{"jsonrpc": "1.0", "id": "", "method": ""';
+var newWork = '{"jsonrpc": "1.0", "id": "", "method": "", "params": ' +workToDo +'}';
+
 // pool vars
 
 if (config.miningPool.enabled = 1) {
     
-    if (config.algos.ethash.pool.enabled = 1) {
+    if (config.algos.c11.pool.enabled = 1) {
         
-        var ethashPool = net.createServer([], ethashConnection);
-        ethashPool.listen(config.algos.ethash.pool.poolport);
-        ethashPool.maxConnections(config.algos.ethash.pool.maxconnections);
-        ethashPool.on("connection", ethashConnection => {
+        var c11Pool = net.createServer(function(c11Connection){
             
-            
+            if (c11Connection.stream.remoteAddress in ips.banned) {
+                
+                console.log("The IP " +c11Connection.stream.remoteAddress +" ( banned ) tried to connect to the c11 pool !");
+                c11Connection.close();
+                
+            } else {
+                
+                
+                
+            };
             
         });
+        c11Pool.listen(config.algos.c11.pool.poolport);
+        c11Pool.maxConnections(config.algos.c11.pool.maxconnections);
+        
+    };
+    if (config.algos.ethash.pool.enabled = 1) {
+        
+        var ethashPool = net.createServer(function(ethashConnection) {
+            
+            if (ethashConnection.stream.remoteAddress in ips.banned) {
+                
+                console.log("The IP " +ethashConnection.stream.remoteAddress +" ( banned ) tried to connect to the ethash pool !");
+                ethashConnection.close();
+                
+            } else {
+                
+                
+                
+            };
+            
+        });
+        ethashPool.listen(config.algos.ethash.pool.poolport);
+        ethashPool.maxConnections(config.algos.ethash.pool.maxconnections);
         
     };
     if (config.algos.scrypt.pool.enabled = 1) {
         
-        var scryptPool = net.createServer();
-        scryptPool.listen(config.algos.scrypt.pool.poolport);
-        scryptPool.maxConnections(config.algos.scrypt.pool.maxconnections);
-        scryptPool.on("connection", scryptConnection => {
+        var scryptPool = net.createServer(function(scryptConnection) {
             
-            
+            if (scryptConnection.stream.remoteAddress in ips.banned) {
+                
+                console.log("The IP " +scryptConnection.stream.remoteAddress +" ( banned ) tried to connect to the scrypt pool !");
+                scryptConnection.close();
+                
+            } else {
+                
+                
+                
+            };
             
         });
+        scryptPool.listen(config.algos.scrypt.pool.poolport);
+        scryptPool.maxConnections(config.algos.scrypt.pool.maxconnections);
         
     };
     if (config.algos.sha256.pool.enabled = 1) {
         
-        var sha256Pool = net.createServer();
-        sha256Pool.listen(config.algos.sha256.pool.poolport);
-        sha256Pool.maxConnections(config.algos.sha256.pool.maxconnections);
-        sha256Pool.on("connection", sha256Connection => {
+        var sha256Pool = net.createServer(function(sha256Connection) {
             
-            
+            if (sha256Connection.stream.remoteAddress in ips.banned) {
+                
+                console.log("The IP " +sha256Connection.stream.remoteAddress +" ( banned ) tried to connect to the sha256 pool !");
+                sha256Connection.close();
+                
+            } else {
+                
+                
+                
+            };
             
         });
+        sha256Pool.listen(config.algos.sha256.pool.poolport);
+        sha256Pool.maxConnections(config.algos.sha256.pool.maxconnections);
         
     };
     if (config.algos.x11.pool.enabled = 1) {
         
-        var x11Pool = net.createServer();
-        x11Pool.listen(config.algos.x11.pool.poolport);
-        x11Pool.maxConnections(config.algos.x11.pool.maxconnections);
-        x11Pool.on("connection", x11Connection => {
+        var x11Pool = net.createServer(function(x11Connection) {
             
-            
+            if (x11Connection.stream.remoteAddress in ips.banned) {
+                
+                console.log("The IP " +x11Connection.stream.remoteAddress in ips.banned);
+                x11Connection.close();
+                
+            } else {
+                
+                
+                
+            };
             
         });
+        x11Pool.listen(config.algos.x11.pool.poolport);
+        x11Pool.maxConnections(config.algos.x11.pool.maxconnections);
         
     };
     if (config.algos.x12.pool.enabled = 1) {
         
-        var x12Pool = net.createServer();
-        x12Pool.listen(config.algos.x12.pool.poolport);
-        x12Pool.maxConnections(config.algos.x12.maxconnections);
-        x12Pool.on("connection", x12Connection => {
+        var x12Pool = net.createServer(function(x12Connection) {
             
-            
+            if (x12Connection.stream.remoteAddress in ips.banned) {
+                
+                console.log("The IP " +x12Connection.stream.remoteAddress +" ( banned ) tried to connect to the x12 pool !");
+                x12Connection.close();
+                
+            } else {
+                
+                
+                
+            };
             
         });
+        x12Pool.listen(config.algos.x12.pool.poolport);
+        x12Pool.maxConnections(config.algos.x12.pool.maxconnections);
+        
+    };
+    if (config.algos.x13.pool.enabled = 1) {
+        
+        var x13Pool = net.createServer(function(x13Connection) {
+            
+            if (x13Connection.stream.remoteAddress in ips.banned) {
+                
+                console.log("The IP " +x13Connection.stream.remoteAddress +" ( banned ) tried to connect to the x13 pool !");
+                x13Connection.close();
+                
+            } else {
+                
+                
+                
+            };
+            
+        });
+        x13Pool.listen(config.algos.x13.pool.poolport);
+        x13Pool.maxConnections(config.algos.x13.pool.maxconnections);
+        
+    };
+    if (config.algos.x14.pool.enabled = 1) {
+        
+        var x14Pool = net.createServer(function(x14Connection) {
+            
+            if (x14Connection.stream.remoteAddress in ips.banned) {
+                
+                console.log("The IP " +x14Connection.stream.remoteAddress +" ( banned ) tried to connect to the x14 pool !");
+                x14Connection.close();
+                
+            } else {
+                
+                
+                
+            };
+            
+        });
+        x14Pool.listen(config.algos.x14.pool.poolport);
+        x14Pool.maxConnections(config.algos.x14.pool.maxconnections);
+        
+    };
+    if (config.algos.x15.pool.enabled = 1) {
+        
+        var x15Pool = net.createServer(function(x15Connection) {
+            
+            if (x15Connection.stream.remoteAddress in ips.banned) {
+                
+                console.log("The IP " +x15Connection.stream.remoteAddress +" ( banned ) tried to connect to the x15 pool !");
+                x15Connection.close();
+                
+            } else {
+                
+                
+                
+            };
+            
+        });
+        x15Pool.listen(config.algos.x15.pool.poolport);
+        x15Pool.maxConnections(config.algos.x15.pool.maxconnections);
+        
+    };
+    if (config.algos.x16.pool.enabled = 1) {
+        
+        var x16Pool = net.createServer(function(x16Connection) {
+            
+            if (x16Connection.stream.remoteAddress in ips.banned) {
+                
+                console.log("The IP " +x16Connection.stream.remoteAddress +" ( banned ) tried to connect to the X16 pool !");
+                x16Connection.close();
+                
+            } else {
+                
+                
+                
+            };
+            
+        });
+        x16Pool.listen(config.algos.x16.pool.poolport);
+        x16Pool.maxConnections(config.algos.x16.pool.poolport);
+        
+    };
+    if (config.algos.x16r.pool.enabled = 1) {
+        
+        var x16rPool = net.createServer(function(x16rConnection) {
+            
+            if (x16rConnection.stream.remoteAddress in ips.banned) {
+                
+                console.log("The IP " +x16rConnection.stream.remoteAddress +" ( banned ) tried to connect to the X16r pool !");
+                x16rConnection.close();
+                
+            } else {
+                
+                
+                
+            };
+            
+        });
+        x16rPool.listen(config.algos.x16r.pool.poolport);
+        x16rPool.maxConnections(config.algos.x16r.pool.maxconnections);
+        
+    };
+    if (config.algos.x16s.pool.enabled = 1) {
+        
+        var x16sPool = net.createServer(function(x16sConnection) {
+            
+            if (x16sConnection.stream.remoteAddress in ips.banned) {
+                
+                console.log("The IP " +x16sConnection.stream.remoteAddress +" ( banned ) tried to connect to the x16s pool !");
+                x16sConnection.close();
+                
+            } else {
+                
+                x16sConnection.on("data", function(datasReceived) {
+                    
+                    if (datasReceived == workAsked) {
+                        
+                        x16sConnection.write(newWork);
+                        
+                    };
+                    if (datasReceived == workDone) {
+                        
+                        
+                        
+                    };
+                    
+                });
+                x16sConnection.on("error", function(x16sPoolError) {
+                    
+                    console.log("The error " +x16sPoolError +" has occured !")
+                    
+                });
+                
+            };
+            
+        });
+        x16sPool.listen(config.algos.x16s.pool.poolport);
+        x16sPool.maxConnections(config.algos.x16s.pool.maxconnections);
         
     };
     
