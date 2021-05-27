@@ -19,28 +19,28 @@ var config = {
                     
                     "activated": 0,
                     "name": "Ethereum Classic",
-                    "walletAddress": "127.0.0.1:"
+                    "walletAddress": "SetWalletAddressHere:SetWalletPortHere"
                     
                 },
                 "eth": {
                     
                     "activated": 0,
                     "name": "Ethereum"
-                    "walletAddress": "127.0.0.1:"
+                    "walletAddress": "SetWalletAddressHere:SetWalletPortHere"
                     
                 },
                 "etp": {
                     
                     "activated": 1,
                     "name": "Metaverse Entropy",
-                    "walletAddress": "127.0.0.1:"
+                    "walletAddress": "SetWalletAddressHere:SetWalletPortHere"
                     
                 },
                 "music": {
                     
                     "activated": 1,
                     "name": "Musicoin",
-                    "walletAddress": "127.0.0.1"
+                    "walletAddress": "SetWalletAddressHere:SetWalletPortHere"
                     
                 }
                 
@@ -62,28 +62,28 @@ var config = {
                     
                     "activated": 0,
                     "name": "Litecoin Classic",
-                    "walletAddress": "127.0.0.1:"
+                    "walletAddress": "SetWalletAddressHere:SetWalletPortHere"
                     
                 },
                 "ltc": {
                     
                     "activated": 0,
                     "name": "Litecoin",
-                    "walletAddress": "127.0.0.1"
+                    "walletAddress": "SetWalletAddressHere:SetWalletPortHere"
                     
                 },
                 "mars": {
                     
                     "activated": 0,
                     "name": "Marscoin",
-                    "walletAddress": "127.0.0.1:"
+                    "walletAddress": "SetWalletAddressHere:SetWalletPortHere"
                     
                 },
                 "moon": {
                     
                     "activated": 0,
                     "name": "Mooncoin"
-                    "walletAddress": "127.0.0.1:"
+                    "walletAddress": "SetWalletAddressHere:SetWalletPortHere"
                     
                 }
                 
@@ -105,7 +105,7 @@ var config = {
                     
                     "activated": 0,
                     "name": "Bitcoin"
-                    "walletAdress": "127.0.0.1:"
+                    "walletAdress": "SetWalletAddressHere:SetWalletPortHere"
                     
                 }
                 
@@ -244,9 +244,9 @@ var config = {
 
 // work vars
 
-var workAsked = '{  }';
-var workDone = '{"jsonrpc": "1.0", "id": "", "method": ""';
-var newWork = '{"jsonrpc": "1.0", "id": "", "method": "", "params": ' +workToDo +'}';
+var askingWorkToWallet = '{"jsonrpc": "1.0", "id": "curltest", "method": "getwork", "params": [] }';
+var getBlockTemplateFromWallet = '{"jsonrpc": "1.0", "id": "curltest", "method": "getblocktemplate", "params": [] }';
+var sendingWorkDoneToWallet = '{"jsonrpc": "1.0", "id": "curltest", "method": "submitheader", "params": [ "' +poolWorkDone +'" ] }';
 
 // pool vars
 
