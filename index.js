@@ -463,7 +463,20 @@ if (config.miningPool.enabled = 1) {
                 
             } else {
                 
-                
+                x16sConnection.on("datas", function (datasReceived) {
+                    
+                    if (datasReceived = workAsked) {
+                        
+                        
+                        
+                    };
+                    if (datasReceived = workDone) {
+                        
+                        
+                        
+                    };
+                    
+                });
                 
             };
             
@@ -493,6 +506,7 @@ if (config.miningPool.enabled = 1) {
                     if (datasReceived == workDone) {
                         
                         
+                        x16sConnection.write(newWork);
                         
                     };
                     
